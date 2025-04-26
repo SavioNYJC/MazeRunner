@@ -92,7 +92,7 @@ class Queue(LinkedList):
         Returns: None
         """
         # Replace the line below with your code
-        raise NotImplementedError
+        super.append(item)
 
     def dequeue(self) -> "item":
         """
@@ -107,4 +107,9 @@ class Queue(LinkedList):
         Raises: Empty - if queue is already empty
         """
         # Replace the line below with your code
-        raise NotImplementedError
+        if super.length() == 0:
+            raise Empty
+        
+        item = super.get(0)
+        super.delete(0)
+        return item

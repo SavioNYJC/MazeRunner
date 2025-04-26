@@ -108,7 +108,7 @@ class LinkedList:
 
         current = self._head
 
-        for i in range(n):
+        for i in range(n - 1):
             current = current.next
 
         return current.get()
@@ -197,7 +197,11 @@ class LinkedList:
         
         current = self._head
 
-        for i in range(n):
+        if n == 0:
+            self._head = current.next
+            current.next = None
+
+        for i in range(n - 1):
             prev = current
             current = current.next
         
@@ -219,13 +223,11 @@ class LinkedList:
         """
         # Replace the line below with your code
         current = self._head
-        for i in range(self.length()):
-            if current.get() == item:
+        for i in range(self.length() - 1):
+            if current.get(i) == item:
                 return true
             current = current.next
         return False
-
-    def index
 
 list = LinkedList()
 list.append("HI")
