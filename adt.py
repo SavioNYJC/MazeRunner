@@ -39,7 +39,10 @@ class Stack(LinkedList):
         Returns: None
         """
         # Replace the line below with your code
-        raise NotImplementedError
+        for i in range(super.length()):
+            if super.get(i) == item:
+                super.insert(0, item)
+        
 
     def pop(self) -> "item":
         """
@@ -54,7 +57,9 @@ class Stack(LinkedList):
         Raises: Empty - if stack is already empty
         """
         # Replace the line below with your code
-        raise NotImplementedError
+        item = super.get(0)
+        super.delete(0)
+        return item
 
 
 # Queue can also inherit from Array
