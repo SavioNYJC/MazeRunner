@@ -35,8 +35,9 @@ class OutOfOptionsError(Exception):
 
 # Initialise options as a Stack or Queue (choose one)
 # Used to store available path options for the next step.
-options = Stack()
+# options = Stack()
 # options = Queue()
+options = CircularQueue(5)
 
 # Stores a list of visited coords
 visited = []
@@ -59,14 +60,17 @@ while here != maze.end:
     for coord in maze.around(here):
         if coord not in visited:
             # options.insert(0, coord)
-            options.push(coord)
+            # options.push(coord)
+            options.enqueue(coord)
 
     # Store visited coord
     visited.append(here)
 
     # Pop the next here from options
     try:
-        here = options.pop()
+        # here = options.pop()
+        here = options.dequeue()
+
     except IndexError:
         raise OutOfOptionsError("No available paths")
     else:

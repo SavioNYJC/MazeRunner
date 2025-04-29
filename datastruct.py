@@ -104,14 +104,20 @@ class LinkedList:
         # Replace the line below with your code
         
         if n >= self.length():
+          print(self.length())
           raise IndexError("Index out of range")
 
-        current = self._head
-
-        for i in range(n - 1):
-            current = current.next
-
-        return current.get()
+        node = self._head
+        if node is None:
+          print("Empty linkedlist")
+          return
+        if n == 0:
+          return node.get()
+        else:
+          if node.next is None:
+            raise IndexError("Index out of range")
+          else:
+            return node.next.get(n - 1)
         
 
     def insert(self, n: int, item) -> None:

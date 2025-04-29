@@ -39,9 +39,11 @@ class Stack(LinkedList):
         Returns: None
         """
         # Replace the line below with your code
-        for i in range(super.length()):
-            if super.get(i) == item:
-                super.insert(0, item)
+        for i in range(super().length()):
+            if super().get(i) == item:
+                print('item found')
+                super().insert(0, item)
+                super().delete(i)
         
 
     def pop(self) -> "item":
@@ -57,8 +59,8 @@ class Stack(LinkedList):
         Raises: Empty - if stack is already empty
         """
         # Replace the line below with your code
-        item = super.get(0)
-        super.delete(0)
+        item = super().get(0)
+        super().delete(0)
         return item
 
 
@@ -92,7 +94,7 @@ class Queue(LinkedList):
         Returns: None
         """
         # Replace the line below with your code
-        super.append(item)
+        super().append(item)
 
     def dequeue(self) -> "item":
         """
@@ -107,9 +109,9 @@ class Queue(LinkedList):
         Raises: Empty - if queue is already empty
         """
         # Replace the line below with your code
-        if super.length() == 0:
+        if super().length() == 0:
             raise Empty
         
-        item = super.get(0)
-        super.delete(0)
+        item = super().get(0)
+        super().delete(0)
         return item

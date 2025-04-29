@@ -16,7 +16,11 @@ class CircularQueue:
 
     def __init__(self, size: int):
         # Delete the line below and write your code here
-        raise NotImplementedError("__init__ not implemented")
+        self.data = [None] * size
+        self.head = -1
+        self.tail = -1
+        self.size = size
+
 
     def __repr__(self) -> str:
         return f"CircularQueue({self.size})"
@@ -28,12 +32,24 @@ class CircularQueue:
         Arguments
         ---------
         - item
-          The item to be added.
+        The item to be added.
 
         Return: None
         """
         # Delete the line below and write your code here
-        raise NotImplementedError("enqueue not implemented")
+        if self.isfull():
+            raise ValueError('Queue is full')
+        if self.isempty():
+            self.head = 0
+            self.tail = 0
+
+        self.data[self.tail] = data
+        if self.tail + 1 == self.size:
+            self.tail = 0
+        else:
+            self.tail += 1
+        return
+            
 
     def dequeue(self) -> "item":
         """
@@ -46,4 +62,31 @@ class CircularQueue:
         Return: item
         """
         # Delete the line below and write your code here
-        raise NotImplementedError("dequeue not implemented")
+        if self.isempty():
+          raise Exception("Queue is empty!")
+        
+        data = self.data[self.head]
+        self.data[self.head] = None
+        if self.head + 1 == self.size:
+            self.head = 0
+        else:
+            self.head += 1
+        return data
+
+    def contains(self, item):
+        for i in range(self.size):
+            if self.data[i] == item:
+                return True
+        return False
+    
+    def isfull(self):
+        return (self.tail + 1) % self.size == self.head
+    def isempty(self):
+        return self.head == -1
+      
+option = CircularQueue(5)
+option.enqueue("hi")
+option.enqueue("hi")
+print(option.data[0])
+option.dequeue()
+print(option.data[0])
